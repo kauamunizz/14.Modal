@@ -1,12 +1,28 @@
-const abrirModal = document.querySelector('#open-modal');
-const fecharModal = document.querySelector('#close-modal');
-const modal = document.querySelector('#modal');
-const fade = document.querySelector('#fade');
+'strict mode'
 
-function esconderModal () {
-    [modal, fade].forEach((e) => e.classList.toggle('hide'));
-}
+const script = (() => {
+    const abrirModal = document.querySelector('#open-modal');
+    const fecharModal = document.querySelector('#close-modal');
+    const modal = document.querySelector('#modal');
+    const fade = document.querySelector('#fade');
 
-[abrirModal, fecharModal, fade].forEach((e) => {
-    e.addEventListener('click', esconderModal);
-})
+    function esconderModal() {
+        [modal, fade].forEach((e) => e.classList.toggle('hide'));
+    }
+
+    function events() {
+        [abrirModal, fecharModal, fade].forEach((e) => {
+            e.addEventListener('click', esconderModal);
+        });
+    }
+
+    function init() {
+        events();
+    }
+
+    return {
+        init
+    };
+})();
+
+script.init();
